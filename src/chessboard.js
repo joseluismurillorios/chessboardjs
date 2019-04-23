@@ -187,8 +187,11 @@ function objToFen(obj) {
 
 window['ChessBoard'] = window['ChessBoard'] || function(containerElOrId, cfg) {
 'use strict';
+var imgCache = {}
+cacheImages();
 
 cfg = cfg || {};
+
 
 //------------------------------------------------------------------------------
 // Constants
@@ -634,7 +637,6 @@ function buildBoard(orientation) {
   return html;
 }
 
-var imgCache = {}
 function cacheImages() {
   var pieces = ['wK', 'wQ', 'wR', 'wB', 'wN', 'wP', 'bK', 'bQ', 'bR', 'bB', 'bN', 'bP'];
   pieces.forEach(function(piece) {
@@ -1694,7 +1696,7 @@ function initDom() {
   createElIds();
 
   // build board and save it in memory
-  cacheImages();
+  // cacheImages();
   containerEl.html(buildBoardContainer());
   boardEl = containerEl.find('.' + CSS.board);
 
